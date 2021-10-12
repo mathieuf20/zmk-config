@@ -135,7 +135,7 @@
 &none	&none			&none			&none			&none			&none									&none			&none	&none	&none	&none	&none
 &none	&none			&none			&none			&none			&none									&none			&none	&none	&none	&none	&none
 &none	&none			&none			&none			&none			&none			&none	&none			&none			&none	&none	&none	&none	&none
-                    					&none			&none			&none			&none	&out OUT_TOG	&mo _RSYSTEM	&none	&none
+                    					&none			&none			&none			&none	&none			&mo _RSYSTEM	&none	&none
 			>;
 		};
 /* restricted_system_layer
