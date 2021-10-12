@@ -8,7 +8,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
-
+#include <dt-bindings/zmk/outputs.h>
 
 // Layers
 #define _DEFAULT	0
@@ -135,7 +135,7 @@
 &none	&none			&none			&none			&none			&none									&none			&none	&none	&none	&none	&none
 &none	&none			&none			&none			&none			&none									&none			&none	&none	&none	&none	&none
 &none	&none			&none			&none			&none			&none			&none	&none			&none			&none	&none	&none	&none	&none
-                    					&none			&none			&none			&none	&none			&mo _RSYSTEM	&none	&none
+                    					&none			&none			&none			&none	&out OUT_TOG	&mo _RSYSTEM	&none	&none
 			>;
 		};
 /* restricted_system_layer
@@ -152,14 +152,14 @@
  *                   |      |      |      |/       /         \      \ |      |  BT  |      |
  *                   `----------------------------'           '------''--------------------'
  */
-// 		restricted_system_layer {
-// 			bindings = <
-// &none	&none	&none	&none	&none	&none					&none	&none		&none	&none	&none	&bootloader
-// &none	&none	&none	&none	&none	&none					&none	&none		&none	&none	&none	&none
-// &none	&none	&none	&none	&none	&none					&none	&none		&none	&none	&none	&none
-// &none	&none	&none	&none	&none	&none	&none	&none	&none	&none		&none	&none	&none	&none
-//                     	&none	&none	&none	&none	&none	&none	&bt BT_CLR	&none
-// 			>;
-// 		};
+		restricted_system_layer {
+			bindings = <
+&none	&none	&none	&none	&none	&none					&none	&none		&none	&none	&none	&bootloader
+&none	&none	&none	&none	&none	&none					&none	&none		&none	&none	&none	&none
+&none	&none	&none	&none	&none	&none					&none	&none		&none	&none	&none	&none
+&none	&none	&none	&none	&none	&none	&none	&none	&none	&none		&none	&none	&none	&none
+                    	&none	&none	&none	&none	&none	&none	&bt BT_CLR	&none
+			>;
+		};
 	};
 };
