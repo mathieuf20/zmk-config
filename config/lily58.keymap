@@ -56,16 +56,16 @@
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
  * |   ~  |   «  |   »  |      |      |      |-------|    |-------|   `  |   _  |   +  |   ^  |   ç  |   à  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |      |      |      | /       /       \SEnter\  |UPPER |DELETE| RGUI |
+ *                   |      |      |      | /       /       \SEnter\  |UPPER |DELETE| RALT |
  *                   |      |      |      |/       /         \      \ | -CASE|      |      |
  *                   `----------------------------'           '------''--------------------'
  */
 		lower_layer {
 			bindings = <
-&mo _SYSTEM		&trans		&trans		&trans		&trans		&trans									&trans			&trans			&trans			&trans			&trans		&kp DELETE
+&mo _SYSTEM		&none		&none		&none		&none		&none									&none			&none			&none			&none			&none		&kp DELETE
 &kp F1			&kp F2      &kp F3		&kp F4		&kp F5		&kp F6									&kp F7			&kp F8			&kp F9			&kp F10			&kp F11		&kp F12
 &kp GRAVE		&kp EXCL    &kp AT		&kp HASH	&kp DOLLAR	&kp PRCNT								&kp CARET		&kp AMPS		&kp KP_MULTIPLY	&kp LS(COMMA)	&kp LS(DOT)	&kp TILDE
-&kp RA(RBKT)	&kp RA(Z)	&kp RA(X)	&trans		&trans		&trans		&kp RA(N9)	&kp RA(N0)		&kp RA(LBKT)	&kp LS(MINUS)	&kp KP_PLUS		&kp LBKT		&kp RBKT  	&kp BSLH
+&kp RA(RBKT)	&kp RA(Z)	&kp RA(X)	&none		&none		&none		&kp RA(N9)	&kp RA(N0)		&kp RA(LBKT)	&kp LS(MINUS)	&kp KP_PLUS		&kp LBKT		&kp RBKT  	&kp BSLH
                                         &trans		&trans		&trans		&trans   	&kp LS(ENTER)	&mo _UPPERCASE	&kp DEL			&trans
 			>;
 		};
