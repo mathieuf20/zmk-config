@@ -85,11 +85,11 @@
  */
 		raise_layer {
 			bindings = <
-&mo _SYSTEM	&kp RA(RBKT)	&trans	&trans	&kp EQUAL	&kp RA(DOT)								&kp K_MUTE		&kp    &kp    &kp    &kp    &kp LC(V)
-&trans		&trans			&trans	&trans	&trans		&trans									&kp K_VOL_UP	&kp HOME  &kp PG_DN &kp PG_UP &kp END   &kp LC(C)
-&trans		&trans			&trans	&trans	&trans		&trans									&kp K_VOL_DN	&kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp LC(X)
-&trans		&trans			&trans	&trans	&trans		&trans			&kp RA(N7)	&kp RA(N8)	&kp RA(RBKT)	&kp RGUI  &kp EQUAL &kp LBRC  &kp RBRC  &kp PIPE
-            	            		&trans	&trans		&mo _UPPERCASE	&trans		&trans		&none			&kp DEL   &kp RCTL
+&mo _SYSTEM	&kp RA(RBKT)	&trans	&trans	&kp EQUAL	&kp RA(DOT)								&kp K_MUTE		&kp K_PREV	&kp K_PP	&kp K_NEXT	&kp PSCRN	&kp LC(V)
+&trans		&trans			&trans	&trans	&trans		&trans									&kp K_VOL_UP	&kp HOME	&kp PG_DN	&kp PG_UP	&kp END		&kp LC(C)
+&trans		&trans			&trans	&trans	&trans		&trans									&kp K_VOL_DN	&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp LC(X)
+&trans		&trans			&trans	&trans	&trans		&trans			&kp RA(N7)	&kp RA(N8)	&kp RA(RBKT)	&kp RGUI	&kp EQUAL	&kp LBRC	&kp RBRC	&kp PIPE
+            	            		&trans	&trans		&mo _UPPERCASE	&trans		&trans		&none			&kp DEL		&kp RCTL
 			>;
 		};
 /* uppercase
