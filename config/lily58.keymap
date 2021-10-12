@@ -15,6 +15,7 @@
 #define _UPPERCASE	1
 #define _LOWER		2
 #define _RAISE		3
+#define _SYSTEM		4
 
 / {
 	keymap {
@@ -46,11 +47,11 @@
 // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
 //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 			bindings = <
-&kp GRAVE		&kp N1		&kp N2		&kp N3		&kp N4		&kp N5								&kp N6		&kp N7		&kp N8		&kp N9		&kp N0		&kp GRAVE
-&kp TAB			&kp LS(Q)	&kp LS(W)	&kp LS(E)	&kp LS(R)	&kp LS(T)							&kp LS(Y)	&kp LS(U)	&kp LS(I)	&kp LS(O)	&kp LS(P)	&kp MINUS
-&mt LCTRL ESC	&kp LS(A)	&kp LS(S)	&kp LS(D)	&kp LS(F)	&kp LS(G)							&kp LS(H)	&kp LS(J)	&kp LS(K)	&kp LS(L)	&kp SEMI	&kp SQT
-&kp LSHFT		&kp LS(Z)	&kp LS(X)	&kp LS(C)	&kp LS(V)	&kp LS(B)	&kp LBKT	&kp RBKT	&kp LS(N)	&kp LS(M)	&kp COMMA	&kp DOT		&kp FSLH	&kp RSHFT
-                    		&kp LALT	&kp LGUI	&mo _LOWER	&kp SPACE	&kp RET		&mo _RAISE	&kp BSPC	&kp RGUI
+&kp GRAVE		&kp LS(N1)	&kp LS(N2)	&kp LS(N3)	&kp LS(N4)	&kp LS(N5)								&kp LS(N6)	&kp LS(N7)	&kp LS(N8)		&kp LS(N9)		&kp LS(N0)		&kp GRAVE
+&kp TAB			&kp LS(Q)	&kp LS(W)	&kp LS(E)	&kp LS(R)	&kp LS(T)								&kp LS(Y)	&kp LS(U)	&kp LS(I)		&kp LS(O)		&kp LS(P)		&kp MINUS
+&mt LCTRL ESC	&kp LS(A)	&kp LS(S)	&kp LS(D)	&kp LS(F)	&kp LS(G)								&kp LS(H)	&kp LS(J)	&kp LS(K)		&kp LS(L)		&kp SEMI		&kp SQT
+&kp LSHFT		&kp LS(Z)	&kp LS(X)	&kp LS(C)	&kp LS(V)	&kp LS(B)		&kp LBKT	&kp RBKT	&kp LS(N)	&kp LS(M)	&kp LS(COMMA)	&kp LS(DOT)		&kp LS(FSLH)	&kp RSHFT
+                    		&kp LALT	&kp LGUI	&mo _LOWER	&kp LS(SPACE)	&kp LS(RET)	&mo _RAISE	&kp BSPC	&kp RGUI
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -64,11 +65,11 @@
 // |       |     |     |      |      |      |        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
 //                     |      |      |      |        |  |       |      |       |       |
 			bindings = <
-&bt BT_CLR &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3 &bt BT_SEL 4                 &trans    &trans    &trans          &trans    &trans    &trans
-&kp F1     &kp F2           &kp F3            &kp F4            &kp F5       &kp F6                       &kp F7    &kp F8    &kp F9          &kp F10   &kp F11   &kp F12
-&kp GRAVE  &kp EXCL         &kp AT            &kp HASH          &kp DOLLAR   &kp PRCNT                    &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR  &kp TILDE
-&trans     &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans       &trans    &trans   &trans    &trans    &kp MINUS &kp KP_PLUS     &kp LBRC  &kp RBRC  &kp PIPE
-                                              &trans            &trans       &trans    &trans   &trans    &trans    &trans    &trans
+&bt BT_CLR &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3 &bt BT_SEL 4                 &trans			&trans    &trans          &trans    &trans    &trans
+&kp F1     &kp F2           &kp F3            &kp F4            &kp F5       &kp F6                       &kp F7			&kp F8    &kp F9          &kp F10   &kp F11   &kp F12
+&kp GRAVE  &kp EXCL         &kp AT            &kp HASH          &kp DOLLAR   &kp PRCNT                    &kp CARET			&kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR  &kp TILDE
+&trans     &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans       &trans    &trans   &trans    &trans			&kp MINUS &kp KP_PLUS     &kp LBRC  &kp RBRC  &kp PIPE
+                                              &trans            &trans       &trans    &trans   &trans    &mo _UPPERCASE	&trans    &trans
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -82,11 +83,11 @@
 // |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   | RGUI  |  =   |  [   |   ]   |   \  |
 //                     |      |      |      |        |  |       |      |       |      |
 			bindings = <
-&trans    &trans &trans &trans  &trans  &trans                       &trans       &trans    &trans    &trans    &trans    &kp LC(V)
-&kp GRAVE &kp N1 &kp N2 &kp N3  &kp N4  &kp N5                       &kp N6       &kp HOME  &kp PG_DN &kp PG_UP &kp END   &kp LC(C)
-&kp F1    &kp F2 &kp F3 &kp F4  &kp F5  &kp F6                       &trans       &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp LC(X)
-&kp F7    &kp F8 &kp F9 &kp F10 &kp F11 &kp F12   &trans   &trans    &kp RA(RBKT) &kp RGUI  &kp EQUAL &kp LBKT  &kp RBKT  &kp BSLH
-                        &trans  &trans  &trans    &trans   &trans    &trans       &kp DEL   &trans
+&trans    &trans &trans &trans  &trans  &trans							&trans       &trans    &trans    &trans    &trans    &kp LC(V)
+&kp GRAVE &kp N1 &kp N2 &kp N3  &kp N4  &kp N5							&kp N6       &kp HOME  &kp PG_DN &kp PG_UP &kp END   &kp LC(C)
+&kp F1    &kp F2 &kp F3 &kp F4  &kp F5  &kp F6							&trans       &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp LC(X)
+&kp F7    &kp F8 &kp F9 &kp F10 &kp F11 &kp F12			&trans	&trans	&kp RA(RBKT) &kp RGUI  &kp EQUAL &kp LBKT  &kp RBKT  &kp BSLH
+                        &trans  &trans  &mo _UPPERCASE	&trans	&trans	&trans       &kp DEL   &trans
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
