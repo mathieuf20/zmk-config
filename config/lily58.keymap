@@ -124,10 +124,10 @@
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
+ * |FLASH |      |      |      |      |      |-------|    |-------|      |      |      |      |      | FLASH|
  * `-----------------------------------------/       /     \TOGGLE\-----------------------------------------'
- *                   |      |      |      | /       /       \  BT  \  |RSTRCT|      |      |
- *                   |      |      |      |/       /         \  USB \ |SYSTEM|      |      |
+ *                   |CLEAR |      |      | /       /       \  BT  \  |RSTRCT|      |      |
+ *                   |  BT  |      |      |/       /         \  USB \ |SYSTEM|      |      |
  *                   `----------------------------'           '------''--------------------'
  */
 		system_layer {
@@ -136,12 +136,12 @@
 &none	&none			&none			&none			&none			&none									&none			&none	&none	&none	&none	&none
 &none	&none			&none			&none			&none			&none									&none			&none	&none	&none	&none	&none
 &none	&none			&none			&none			&none			&none			&none	&none			&none			&none	&none	&none	&none	&none
-                    					&none			&none			&none			&none	&out OUT_TOG	&mo _RSYSTEM	&none	&none
+                    					&bt BT_CLR		&none			&none			&none	&out OUT_TOG	&mo _RSYSTEM	&none	&none
 			>;
 		};
 /* digits_layer
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |RESET |      |      |      |      |      |                    |      |      |      |      |      | RESET|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      | TTY1 | TTY2 | TTY3 | TTY4 | TTY5 |                    | TTY6 | TTY7 | TTY8 | TTY9 | TTY0 |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -155,7 +155,7 @@
  */
 		digits_layer {
 			bindings = <
-&none		&none			&none			&none			&none			&none									&none			&none			&none			&none			&none			&none
+&reset		&none			&none			&none			&none			&none									&none			&none			&none			&none			&none			&reset
 &none 		&kp LC(LA(F1))	&kp LC(LA(F2))	&kp LC(LA(F3))	&kp LC(LA(F4))	&kp LC(LA(F5)) 							&kp LC(LA(F6))	&kp LC(LA(F7))	&kp LC(LA(F8))	&kp LC(LA(F9))	&kp LC(LA(F10))	&none
 &kp GRAVE	&kp N1			&kp N2			&kp N3			&kp N4			&kp N5									&kp N6			&kp N7			&kp N8			&kp N9  		&kp N0			&kp RA(RBKT)
 &none		&none			&none			&none			&none			&none			&kp RA(Z)	&kp RA(X)	&none			&none			&none			&none			&none			&none
