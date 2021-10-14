@@ -16,7 +16,19 @@
 #define _RAISE		2
 #define _UPPERCASE	3
 #define _SYSTEM		4
-#define _RSYSTEM	5
+#define _DIGITS		5
+#define _RSYSTEM	6
+
+#define __TTY1 LC(LA(F1))
+#define __TTY2 LC(LA(F2))
+#define __TTY3 LC(LA(F3))
+#define __TTY4 LC(LA(F4))
+#define __TTY5 LC(LA(F5))
+#define __TTY6 LC(LA(F6))
+#define __TTY7 LC(LA(F7))
+#define __TTY8 LC(LA(F8))
+#define __TTY9 LC(LA(F9))
+#define __TTY0 LC(LA(F0))
 
 / {
 	keymap {
@@ -71,7 +83,7 @@
 		};
 /* raise_layer | _RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |SYSTEM|   ~  |      |      |   =  |   >  |                    | Mute | Prev | Play | Next |PRTSCR|Ctrl+V|
+ * |   \  |   ~  |      |      |   =  |   >  |                    | Mute | Prev | Play | Next |PRTSCR|Ctrl+V|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |      |      |      |      |                    | Vol+ | HOME | PgDn | PgUp | END  |Ctrl+C|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -85,18 +97,18 @@
  */
 		raise_layer {
 			bindings = <
-&mo _SYSTEM	&kp RA(RBKT)	&trans	&trans	&kp EQUAL	&kp RA(DOT)								&kp K_MUTE		&kp K_PREV	&kp K_PP	&kp K_NEXT	&kp PSCRN	&kp LC(V)
+&kp TILDE	&kp RA(RBKT)	&trans	&trans	&kp EQUAL	&kp RA(DOT)								&kp K_MUTE		&kp K_PREV	&kp K_PP	&kp K_NEXT	&kp PSCRN	&kp LC(V)
 &trans		&trans			&trans	&trans	&trans		&trans									&kp K_VOL_UP	&kp HOME	&kp PG_DN	&kp PG_UP	&kp END		&kp LC(C)
 &trans		&trans			&trans	&trans	&trans		&trans									&kp K_VOL_DN	&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp LC(X)
 &trans		&trans			&trans	&trans	&trans		&trans			&kp RA(N7)	&kp RA(N8)	&kp RA(RBKT)	&kp RGUI	&kp EQUAL	&kp LBRC	&kp RBRC	&kp PIPE
-            	            		&trans	&trans		&mo _UPPERCASE	&trans		&trans		&none			&kp DEL		&kp RCTL
+            	            		&trans	&trans		&mo _UPPERCASE	&mo _DIGITS	&trans		&none			&kp DEL		&kp RCTL
 			>;
 		};
 /* uppercase
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |   |  |   !  |   @  |   #  |   $  |   %  |                    |   ?  |   &  |   *  |   (  |   )  |   ~  |
+ * |   |  |   !  |   @  |   #  |   $  |   %  |                    |   ?  |   &  |   *  |   (  |   )  |  ~   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |   ~  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |      |
+ * |   ~  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  _   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   :  |  È   |
  * |------+------+------+------+------+------|   <   |    |    >  |------+------+------+------+------+------|
@@ -109,7 +121,7 @@
 		uppercase_layer {
 			bindings = <
 &kp RA(GRAVE)	&kp LS(N1)	&kp LS(N2)	&kp LS(N3)	&kp LS(N4)	&kp LS(N5)								&kp LS(N6)	&kp LS(N7)	&kp LS(N8)		&kp LS(N9)		&kp LS(N0)		&kp RA(RBKT)
-&kp RA(RBKT)	&kp LS(Q)	&kp LS(W)	&kp LS(E)	&kp LS(R)	&kp LS(T)								&kp LS(Y)	&kp LS(U)	&kp LS(I)		&kp LS(O)		&kp LS(P)		&kp MINUS
+&kp RA(RBKT)	&kp LS(Q)	&kp LS(W)	&kp LS(E)	&kp LS(R)	&kp LS(T)								&kp LS(Y)	&kp LS(U)	&kp LS(I)		&kp LS(O)		&kp LS(P)		&kp RA(MINUS)
 &none			&kp LS(A)	&kp LS(S)	&kp LS(D)	&kp LS(F)	&kp LS(G)								&kp LS(H)	&kp LS(J)	&kp LS(K)		&kp LS(L)		&kp LS(SEMI)	&kp LS(SQT)
 &kp SPACE		&kp LS(Z)	&kp LS(X)	&kp LS(C)	&kp LS(V)	&kp LS(B)	&kp RA(COMMA)	&kp RA(DOT)	&kp LS(N)	&kp LS(M)	&kp LS(COMMA)	&kp LS(DOT)		&kp LS(FSLH)	&kp SPACE
                     					&kp LALT	&kp LGUI	&none		&kp LS(SPACE)	&kp RET		&none		&kp BSPC	&kp RALT
@@ -138,6 +150,29 @@
                     					&none			&none			&none			&none	&out OUT_TOG	&mo _RSYSTEM	&none	&none
 			>;
 		};
+/* digits_layer
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |      | TTY1 | TTY2 | TTY3 | TTY4 | TTY5 |                    | TTY6 | TTY7 | TTY8 | TTY9 | TTY0 |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |   /  |   1  |   2  |   3  |   4  |   5  |-------.    ,-------|   6  |   7  |   8  |   9  |   0  |   ~  |
+ * |------+------+------+------+------+------|   «   |    |   »   |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
+ * `-----------------------------------------/       /     \      \-----------------------------------------'
+ *                   |      |      |      | /       /       \      \  |      |      |      |
+ *                   |      |      |      |/       /         \      \ |      |      |      |
+ *                   `----------------------------'           '------''--------------------'
+ */
+		digits_layer {
+			bindings = <
+&none		&none		&none		&none		&none		&none							&none		&none		&none		&none		&none		&none
+&none 		&kp __TTY1	&kp __TTY2	&kp __TTY3	&kp __TTY4	&kp __TTY5 						&kp __TTY6	&kp __TTY7	&kp __TTY8	&kp __TTY9 	&kp __TTY0	&none
+&kp GRAVE	&kp N1		&kp N2		&kp N3		&kp N4		&kp N5							&kp N6      &kp N7		&kp N8    	&kp N9  	&kp N0		&kp RA(RBKT)
+&none		&none		&none		&none		&none		&none	&kp RA(Z)	&kp RA(X)	&none		&none		&none		&none		&none		&none
+            	        			&none		&none		&none	&none		&none		&none		&none		&none
+			>;
+		};
 /* restricted_system_layer
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |FLASH |
@@ -148,17 +183,17 @@
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |      |      |      | /       /       \      \  |      |CLEAR |      |
- *                   |      |      |      |/       /         \      \ |      |  BT  |      |
+ *                   |      |      |      | /       /       \      \  |      |      |CLEAR |
+ *                   |      |      |      |/       /         \      \ |      |      |  BT  |
  *                   `----------------------------'           '------''--------------------'
  */
 		restricted_system_layer {
 			bindings = <
-&none	&none	&none	&none	&none	&none					&none	&none		&none	&none	&none	&bootloader
-&none	&none	&none	&none	&none	&none					&none	&none		&none	&none	&none	&none
-&none	&none	&none	&none	&none	&none					&none	&none		&none	&none	&none	&none
-&none	&none	&none	&none	&none	&none	&none	&none	&none	&none		&none	&none	&none	&none
-                    	&none	&none	&none	&none	&none	&none	&bt BT_CLR	&none
+&none	&none	&none	&none	&none	&none					&none	&none	&none		&none	&none	&bootloader
+&none	&none	&none	&none	&none	&none					&none	&none	&none		&none	&none	&none
+&none	&none	&none	&none	&none	&none					&none	&none	&none		&none	&none	&none
+&none	&none	&none	&none	&none	&none	&none	&none	&none	&none	&none		&none	&none	&none
+                    	&none	&none	&none	&none	&none	&none	&none	&bt BT_CLR
 			>;
 		};
 	};
