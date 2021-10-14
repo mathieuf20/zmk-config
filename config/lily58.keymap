@@ -19,17 +19,6 @@
 #define _DIGITS		5
 #define _RSYSTEM	6
 
-#define __TTY1 LC(LA(F1))
-#define __TTY2 LC(LA(F2))
-#define __TTY3 LC(LA(F3))
-#define __TTY4 LC(LA(F4))
-#define __TTY5 LC(LA(F5))
-#define __TTY6 LC(LA(F6))
-#define __TTY7 LC(LA(F7))
-#define __TTY8 LC(LA(F8))
-#define __TTY9 LC(LA(F9))
-#define __TTY0 LC(LA(F0))
-
 / {
 	keymap {
 		compatible = "zmk,keymap";
@@ -121,7 +110,7 @@
 		uppercase_layer {
 			bindings = <
 &kp RA(GRAVE)	&kp LS(N1)	&kp LS(N2)	&kp LS(N3)	&kp LS(N4)	&kp LS(N5)								&kp LS(N6)	&kp LS(N7)	&kp LS(N8)		&kp LS(N9)		&kp LS(N0)		&kp RA(RBKT)
-&kp RA(RBKT)	&kp LS(Q)	&kp LS(W)	&kp LS(E)	&kp LS(R)	&kp LS(T)								&kp LS(Y)	&kp LS(U)	&kp LS(I)		&kp LS(O)		&kp LS(P)		&kp RA(MINUS)
+&kp RA(RBKT)	&kp LS(Q)	&kp LS(W)	&kp LS(E)	&kp LS(R)	&kp LS(T)								&kp LS(Y)	&kp LS(U)	&kp LS(I)		&kp LS(O)		&kp LS(P)		&kp LS(MINUS)
 &none			&kp LS(A)	&kp LS(S)	&kp LS(D)	&kp LS(F)	&kp LS(G)								&kp LS(H)	&kp LS(J)	&kp LS(K)		&kp LS(L)		&kp LS(SEMI)	&kp LS(SQT)
 &kp SPACE		&kp LS(Z)	&kp LS(X)	&kp LS(C)	&kp LS(V)	&kp LS(B)	&kp RA(COMMA)	&kp RA(DOT)	&kp LS(N)	&kp LS(M)	&kp LS(COMMA)	&kp LS(DOT)		&kp LS(FSLH)	&kp SPACE
                     					&kp LALT	&kp LGUI	&none		&kp LS(SPACE)	&kp RET		&none		&kp BSPC	&kp RALT
@@ -167,7 +156,7 @@
 		digits_layer {
 			bindings = <
 &none		&none		&none		&none		&none		&none							&none		&none		&none		&none		&none		&none
-&none 		&kp __TTY1	&kp __TTY2	&kp __TTY3	&kp __TTY4	&kp __TTY5 						&kp __TTY6	&kp __TTY7	&kp __TTY8	&kp __TTY9 	&kp __TTY0	&none
+&none &kp LC(LA(F1)) &kp LC(LA(F2)) &kp LC(LA(F3)) &kp LC(LA(F4)) &kp LC(LA(F5)) &kp LC(LA(F6)) &kp LC(LA(F7)) &kp LC(LA(F8)) &kp LC(LA(F9)) &kp LC(LA(F0)) &none
 &kp GRAVE	&kp N1		&kp N2		&kp N3		&kp N4		&kp N5							&kp N6      &kp N7		&kp N8    	&kp N9  	&kp N0		&kp RA(RBKT)
 &none		&none		&none		&none		&none		&none	&kp RA(Z)	&kp RA(X)	&none		&none		&none		&none		&none		&none
             	        			&none		&none		&none	&none		&none		&none		&none		&none
