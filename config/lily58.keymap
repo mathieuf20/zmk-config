@@ -18,6 +18,7 @@
 #define _SYSTEM		4
 #define _DIGITS		5
 #define _RSYSTEM	6
+#define _RSTFLSH	7
 
 / {
 	keymap {
@@ -118,25 +119,25 @@
 		};
 /* system_layer
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |  BT0 |  BT1 |  BT2 |  BT3 |  BT4 |                    |      |      |      |      |      | RESET|
+ * |      |  BT0 |  BT1 |  BT2 |  BT3 |  BT4 |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |FLASH |      |      |      |      |      |-------|    |-------|      |      |      |      |      | FLASH|
+ * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \TOGGLE\-----------------------------------------'
- *                   |CLEAR |      |      | /       /       \  BT  \  |RSTRCT|      |      |
- *                   |  BT  |      |      |/       /         \  USB \ |SYSTEM|      |      |
+ *                   |      |      |      | /       /       \  BT  \  |RSTRCT|      |      |
+ *                   |      |      |      |/       /         \  USB \ |SYSTEM|      |      |
  *                   `----------------------------'           '------''--------------------'
  */
 		system_layer {
 			bindings = <
-&none	&bt BT_SEL 0    &bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4							&none			&none	&none	&none	&none	&reset
+&none	&bt BT_SEL 0    &bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4							&none			&none	&none	&none	&none	&none
 &none	&none			&none			&none			&none			&none									&none			&none	&none	&none	&none	&none
 &none	&none			&none			&none			&none			&none									&none			&none	&none	&none	&none	&none
 &none	&none			&none			&none			&none			&none			&none	&none			&none			&none	&none	&none	&none	&none
-                    					&bt BT_CLR		&none			&none			&none	&out OUT_TOG	&mo _RSYSTEM	&none	&none
+	      	        					&none		&none			&none			&none	&out OUT_TOG	&mo _RSYSTEM	&none	&none
 			>;
 		};
 /* digits_layer
@@ -164,7 +165,7 @@
 		};
 /* restricted_system_layer
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |FLASH |
+ * |      |      |      |      |      |      |                    |      |      |      |      |      |RSTFLS|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -172,17 +173,40 @@
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |      |      |      | /       /       \      \  |      |      |CLEAR |
- *                   |      |      |      |/       /         \      \ |      |      |  BT  |
+ *                   |      |      |      | /       /       \      \  |      |      |      |
+ *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
 		restricted_system_layer {
 			bindings = <
-&none	&none	&none	&none	&none	&none					&none	&none	&none		&none	&none	&bootloader
+&none	&none	&none	&none	&none	&none					&none	&none	&none		&none	&none	&to _RSTFLSH
 &none	&none	&none	&none	&none	&none					&none	&none	&none		&none	&none	&none
 &none	&none	&none	&none	&none	&none					&none	&none	&none		&none	&none	&none
 &none	&none	&none	&none	&none	&none	&none	&none	&none	&none	&none		&none	&none	&none
-                    	&none	&none	&none	&none	&none	&none	&none	&bt BT_CLR
+                    	&none	&none	&none	&none	&none	&none	&none	&none
+			>;
+		};
+/* reset_flash_layer
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * | RESET|      |      |      |      |      |                    |      |      |      |      |      |RESET |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | DFLT |      |      |      |      |      |-------.    ,-------|      |      |      |      |      | DFLT |
+ * |------+------+------+------+------+------|TOGOLED|    |TOGOLED|------+------+------+------+------+------|
+ * | FLASH|      |      |      |      |      |-------|    |-------|      |      |      |      |      |FLASH |
+ * `-----------------------------------------/       /     \      \-----------------------------------------'
+ *                   |      |      |      | / DFLT  /       \ DFLT \  |      |      |      |
+ *                   |      |      |      |/       /         \      \ |      |      |      |
+ *                   `----------------------------'           '------''--------------------'
+ */
+		reset_flash_layer {
+			bindings = <
+&reset			&none	&none	&none	&none	&none											&none	&none	&none		&none	&none	&reset
+&none			&none	&none	&none	&none	&none											&none	&none	&none		&none	&none	&none
+&to _DEFAULT	&none	&none	&none	&none	&none											&none	&none	&none		&none	&none	&to _DEFAULT
+&bootloader		&none	&none	&none	&none	&none	&ext_power EP_TOG	&ext_power EP_TOG	&none	&none	&none		&none	&none	&bootloader
+                    			&none	&none	&none	&to _DEFAULT		&to _DEFAULT		&none	&none	&none
 			>;
 		};
 	};
