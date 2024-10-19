@@ -19,6 +19,8 @@
 #define _DIGITS		5
 #define _RSYSTEM	6
 #define _RSTFLSH	7
+#define _GAMING		8
+#define _GAMINGUP	9
 
 / {
 	keymap {
@@ -91,7 +93,7 @@
 &trans		&trans			&trans	&trans	&trans		&trans									&kp K_VOL_UP	&kp HOME	&kp PG_DN	&kp PG_UP	&kp END		&kp LC(C)
 &trans		&trans			&trans	&trans	&trans		&trans									&kp K_VOL_DN	&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&kp LC(X)
 &trans		&trans			&trans	&trans	&trans		&trans			&kp RA(N7)	&kp RA(N8)	&kp RA(RBKT)	&kp RGUI	&kp EQUAL	&kp LBRC	&kp RBRC	&kp PIPE
-            	            		&trans	&trans		&mo _UPPERCASE	&mo _DIGITS	&trans		&none			&kp DEL		&kp RCTL
+            	            		&trans	&trans		&mo _UPPERCASE	&mo _DIGITS	&trans		&none			&kp DEL		&kp RCTRL
 			>;
 		};
 /* uppercase
@@ -127,13 +129,13 @@
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \TOGGLE\-----------------------------------------'
- *                   |      |      |      | /       /       \  BT  \  |RSTRCT|      |      |
+ *                   |BT_CLR|      |      | /       /       \  BT  \  |RSTRCT|      |      |
  *                   |      |      |      |/       /         \  USB \ |SYSTEM|      |      |
  *                   `----------------------------'           '------''--------------------'
  */
 		system_layer {
 			bindings = <
-&none	&bt BT_SEL 0    &bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4							&none			&none	&none	&none	&none	&none
+&none	&bt BT_SEL 0    &bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4							&none			&none	&none	&none	&none	&to _GAMING
 &none	&none			&none			&none			&none			&none									&none			&none	&none	&none	&none	&none
 &none	&none			&none			&none			&none			&none									&none			&none	&none	&none	&none	&none
 &none	&none			&none			&none			&none			&none			&none	&none			&none			&none	&none	&none	&none	&none
@@ -156,7 +158,7 @@
  */
 		digits_layer {
 			bindings = <
-&reset		&none			&none			&none			&none			&none									&none			&none			&none			&none			&none			&reset
+&sys_reset	&none			&none			&none			&none			&none									&none			&none			&none			&none			&none			&sys_reset
 &none 		&kp LC(LA(F1))	&kp LC(LA(F2))	&kp LC(LA(F3))	&kp LC(LA(F4))	&kp LC(LA(F5)) 							&kp LC(LA(F6))	&kp LC(LA(F7))	&kp LC(LA(F8))	&kp LC(LA(F9))	&kp LC(LA(F10))	&none
 &kp GRAVE	&kp N1			&kp N2			&kp N3			&kp N4			&kp N5									&kp N6			&kp N7			&kp N8			&kp N9  		&kp N0			&kp RA(RBKT)
 &none		&none			&none			&none			&none			&none			&kp RA(Z)	&kp RA(X)	&none			&none			&none			&none			&none			&none
@@ -202,11 +204,57 @@
  */
 		reset_flash_layer {
 			bindings = <
-&reset			&none	&none	&none	&none	&none									&none	&none	&none	&none	&none	&reset
+&sys_reset		&none	&none	&none	&none	&none									&none	&none	&none	&none	&none	&sys_reset
 &none			&none	&none	&none	&none	&none									&none	&none	&none	&none	&none	&none
 &to _DEFAULT	&none	&none	&none	&none	&none									&none	&none	&none	&none	&none	&to _DEFAULT
 &bootloader		&none	&none	&none	&none	&none	&none			&none			&none	&none	&none	&none	&none	&bootloader
                     			&none	&none	&none	&to _DEFAULT	&to _DEFAULT	&none	&none	&none
+			>;
+		};
+/* gaming_layer
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * | DFLT |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | DFLT |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | DFLT |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
+ * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+ * | DFLT |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
+ * `-----------------------------------------/       /     \      \-----------------------------------------'
+ *                   |      |      |      | /       /       \ SPACE\  |      |      |      |
+ *                   |      |      |      |/       /         \      \ |      |      |      |
+ *                   `----------------------------'           '------''--------------------'
+ */
+				gaming_layer {
+			bindings = <
+&to _DEFAULT	&none	&none	&none	&none	&none					&kp GRAVE		&kp N1			&kp N2	&kp N3		&kp N4		&kp N5
+&to _DEFAULT	&none	&none	&none	&none	&none					&kp TAB			&kp Q 			&kp W 	&kp E		&kp R 		&kp T
+&to _DEFAULT	&none	&none	&none	&none	&none					&mt LCTRL ESC	&kp A 			&kp S 	&kp D		&kp F 		&kp G
+&to _DEFAULT	&none	&none	&none	&none	&none	&none	&I		&kp LSHFT		&kp Z 			&kp X 	&kp C		&kp V 		&kp B
+            	    			&none	&none	&none	&none	&SPACE	&mo(_GAMINGUP)	&to _GAMINGUP	&none
+			>;
+		};
+/* gaming_layer_upper
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * | DFLT |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | DFLT |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | DFLT |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
+ * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+ * | DFLT |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
+ * `-----------------------------------------/       /     \      \-----------------------------------------'
+ *                   |      |      |      | /       /       \ SPACE\  |      |      |      |
+ *                   |      |      |      |/       /         \      \ |      |      |      |
+ *                   `----------------------------'           '------''--------------------'
+ */
+				gaming_layer_upper {
+			bindings = <
+&to _DEFAULT	&none	&none	&none	&none	&none					&kp N6      &kp N7   	&kp N8    &kp N9  &kp N0   &kp BSPC
+&to _DEFAULT	&none	&none	&none	&none	&none					&kp Y       &kp U    	&kp I     &kp O   &kp P    &kp MINUS
+&to _DEFAULT	&none	&none	&none	&none	&none					&kp H       &kp J    	&kp K     &kp L   &kp SEMI &kp SQT
+&to _DEFAULT	&none	&none	&none	&none	&none	&none	&none	&kp N       &kp M    	&kp COMMA &kp DOT &kp FSLH &kp RSHFT
+            	    			&none	&none	&none	&none	&SPACE	&none		&to _GAMING	&none
 			>;
 		};
 	};
